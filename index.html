@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<title>Template 1 </title>
+	<title>RPG Game - Multiplayer Style!</title>
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -13,12 +13,65 @@
 
 </head>
 <body>
-	
+	<div class="wrapper">
+		<h1>Rock Paper Scissors</h1>
+		<div class="msg-center text-center">
+		</div>
+		<div class="register-container text-center">
+			<input type="text" id="txtName" class="textbox" placeholder="Name" />
+			<button id="cmdPlay" type="submit" class="btn btn-default cmdPlay">Submit</button>
+		</div>
+		<div class="gameplay-container">
+			<div class="jumbotron">
+				<div class="text-center container">
+					<div class="row">
+						<div class="p1-container col-md-6">
+							<div class="wait-container">
+								<h2>Waiting For Player 1</h2>
+							</div>
+							<div class="play1-container">
+								<label class="lblP1Name"></label>
+								<button id="btnP1Rock" class="btn btn-primary">Rock</button>
+								<button id="btnP1Paper" class="btn btn-primary">Paper</button>
+								<button id="btnP1Scissors" class="btn btn-primary">Scissors</button>
+								<br />
+								<label id="lblP1Record"></label>
+							</div>
+						</div>
+						<div class="p2-container col-md-6">
+							<div class="wait-container">
+								<h2>Waiting For Player 2</h2>
+							</div>
+							<div class="play2-container">
+								<label class="lblP2Name"></label>
+								<button id="btnP2Rock" class="btn btn-primary">Rock</button>
+								<button id="btnP2Paper" class="btn btn-primary">Paper</button>
+								<button id="btnP2Scissors" class="btn btn-primary">Scissors</button>
+								<br />
+								<label id="lblP1Record"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="chat-container text-center">
+			<form>
+				<textarea id="textAreaChat" height="100" class="chatroom"></textarea><br />
+				<input id="txtChat" /><br />
+				<button id="btnChat" class="btn btn-default">Send </button>
+			</form>
+		</div>
+	</div>
+
 	<!-- jQuery, javascript file for the Bootstrap's javascript file to function -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="assets/js/app.js"></script>
 	<script type="text/JavaScript">
 		
 	</script>
