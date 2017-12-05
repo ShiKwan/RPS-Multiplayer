@@ -9,18 +9,34 @@
   };
   firebase.initializeApp(config);
   var database = firebase.database();
-  var numPlayers = 0;
+  var p1Ref = database.ref("/player1");
+  var p2Ref = database.ref("/player2");
+  var p1Exist = false;
+  var p2Exist = false;
 
   function registerPlayer(playerName){
-    if(numPlayers == 1){
-      $(".lblP1Name").text(playerName);
-      $(".wait-container").hide();
+    console.log("register player: p1 -> " + p1Exist + ", p2 -> " + p2Exist);
+    if((p1Exist == false && p2Exist == false) || (p1Exist == false && p2Exist == true)){
+      console.log("added player 1");
+      var conn = p1Ref.push(true);
+      p1Ref.set({
+        name: playerName
+      });
+      conn.onDisconnect().remove();
+      p1Exist = true;
+    }else if(p1Exist == true && p2Exist == false){
+      console.log("added player 2");
+      var conn = p2Ref.push(true);
+      p2Ref.set({
+        name: playerName
+      });
+      conn.onDisconnect().remove();
+      p2Exist = true;
     }
   }
 
   $(".msg-center").hide();
   $("#cmdPlay").on("click", function(){
-    if(numPlayers < 2){
       console.log($("#txtName").val());
       if($("#txtName").val().trim() == ""){
         console.log($("#txtName").text());
@@ -29,19 +45,36 @@
         $(".msg-center").addClass("bg-danger");
       }else{
           var user= $("#txtName").val().trim();
-          var con = database.ref().push(user);
-          con.onDisconnect().remove();
-          numPlayers--;
+          registerPlayer(user);
           console.log("user added to firebase!");
-
       }
-    }
   });
 
 
-database.ref().on("value", function(snapshot){
+p1Ref.on("value", function(snapshot){
   console.log(snapshot.val());
   numPlayers= snapshot.numChildren();
   console.log("Number of players: " + numPlayers);
 
+  if(snapshot.numChildren() == 0){
+    p1Exist = false;
+  }else{
+    p1Exist = true;
+  }
+  
+  
+})
+
+p2Ref.on("value", function(snapshot){
+  console.log(snapshot.val());
+  numPlayers= snapshot.numChildren();
+  console.log("Number of players: " + numPlayers);
+
+  if(snapshot.numChildren() == 0){
+    p2Exist = false;
+  }else{
+    p2Exist = true;
+  }
+  
+  
 })
