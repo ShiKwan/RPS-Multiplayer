@@ -61,6 +61,10 @@ function initialization(){
 	$(".play2-container").hide();
 	checkForP1();
 	checkForP2();
+	if(!player1.exist && !player2.exist){
+		chat.remove();
+		$("#textAreaChat").empty();
+	}
 }
 
 
@@ -98,6 +102,7 @@ function checkForP2(){
 p1Ref.on("child_removed", function(snapshot){
 	console.log("in child removed p1");
 	if(!snapshot.hasChild("name")){
+		player1.name = "";
 		console.log(" name has been removed");
 		$(".lblP1Name").text("");		
 		$(".p1-wait-container").show();
@@ -108,6 +113,7 @@ p1Ref.on("child_removed", function(snapshot){
 
 p2Ref.on("child_removed", function(snapshot){
 	if(!snapshot.hasChild("name")){
+		player2.name = "";
 		console.log("name has been removed");
 		$(".lblP2Name").text("");
 		$(".p2-wait-container").show();
@@ -245,6 +251,7 @@ $("#cmdPlay").click(function(){
 		$(".play2-container").show();
 		$(".play1-container").hide();
 	}
+	$("#txtName").empty();
 })
 
 $(".btn-p1").click(function(){

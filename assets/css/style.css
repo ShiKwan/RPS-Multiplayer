@@ -2,3 +2,8 @@
 	height: 300px;
 	width: 500px;
 }
+
+.msg-center {
+	padding: 10px;
+	margin: 10px 0 10px;
+}
