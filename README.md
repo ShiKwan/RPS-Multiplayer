@@ -1,6 +1,6 @@
 # Multiplayer Rock Paper Scissors Game
 
-[Game]"https://shikwan.github.io/RPS-Multiplayer/" 
+[Game](https://shikwan.github.io/RPS-Multiplayer/)
 
 Technology integration:
 
